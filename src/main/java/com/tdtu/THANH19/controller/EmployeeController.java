@@ -18,7 +18,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	@RequestMapping(value = { "/", "/employee-list" })
+	@RequestMapping(value = { "/employee-list" })
 	public String listEmployee(Model model) {
 		model.addAttribute("listEmployee", employeeRepository.findAll());
 		return "employee-list";
@@ -62,7 +62,7 @@ public class EmployeeController {
 		return "employee-list";
 	}
 
-	@RequestMapping("/customerDelete/{id}")
+	@RequestMapping("/employeeDelete/{id}")
 	public String doDeleteCustomer(@PathVariable int id, Model model) {
 		employeeRepository.deleteById(id);
 		model.addAttribute("listEmployee", employeeRepository.findAll());
