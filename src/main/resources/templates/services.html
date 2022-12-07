@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drip Cafe - Home</title>
+    <title>Coffee shop - Services</title>
     <link th:href = "@{/css/style.css}" rel="stylesheet">
     <script type="text/javascript" th:src = "@{/js/script.js}"></script>
     <script type="text/javascript" th:src = "@{/js/menu.js}"></script>
@@ -13,6 +13,7 @@
     
     <link rel="icon" href="img/favicon.png" />
   </head>
+
   <body>
     <header>
       <div class="second-header">
@@ -40,17 +41,25 @@
               </a>
             </li>
             <br />
+            <li class="menu-nav__item">
+              <a href="index.html" class="menu-nav__link">
+                Home
+              </a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="menu.html" class="menu-nav__link">
+                Menu
+              </a>
+            </li>
             <li class="menu-nav__item active">
-              <a href="index.html" class="menu-nav__link"> Home </a>
+              <a href="services.html" class="menu-nav__link">
+                Services
+              </a>
             </li>
             <li class="menu-nav__item">
-              <a href="menu.html" class="menu-nav__link"> Menu </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="services.html" class="menu-nav__link"> Services </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="contact.html" class="menu-nav__link"> Contact </a>
+              <a href="contact.html" class="menu-nav__link">
+                Contact
+              </a>
             </li>
             <li class="menu-nav__item">
               <a href="#!" class="menu-nav__link cart__openBtn">
@@ -85,72 +94,75 @@
           <div class="item10-display"></div>
           <div class="item11-display"></div>
           <div class="item12-display"></div>
-          <div class="total"></div>
+          <div class="total">
+            <br />
+            <br />
+            Your Shopping Cart is empty. <br />
+            Add items to cart by hovering over/tapping on the images of products
+            on the Menu page.
+          </div>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="home">
+      <section class="services">
         <div class="pic-area">
           <div class="pic-area-text">
-            <h2>Welcome to</h2>
+            <h2>Take a Look at Our</h2>
             <h1 class="home__name">
-              <span class="logo-first">Drip</span>
-              <span class="logo-last">Cafe</span>
+              Amazing Services!
             </h1>
-            <h3>Where coffee and comfort come together</h3>
-            <a href="menu.html">
-              <button class="btn-order">Order Now!</button>
-            </a>
+            <h3>Your home away from home.</h3>
+            <!-- <button class="btn-order">Order Now!</button> -->
           </div>
         </div>
         <div class="main-area">
           <div class="section-area">
             <div class="section-A">
               <div class="box-text">
-                <h1>Who We Are</h1>
+                <h1>Entertainment</h1>
                 <p>
-                  51900833 - Bui Cong Thanh
-                  51900830 - Nguyen Minh Tan
-                  51900801 - Nguyen Phuc Duy Khang
+                  Need something to read? Check out our bookshelf for the hotest
+                  New York Bestsellers in the past year. We also have free daily
+                  newspapers for anyone's leisure. Our television is on
+                  throughout the day. Daily events occur ranging from karaoke to
+                  concerts from our local school band!
                 </p>
               </div>
               <div class="box-img">
-                <img src="img/who-we-are.jpg" alt="Who We Are" />
+                <img src="../img/entertainment.jpg" alt="Entertainment" />
               </div>
             </div>
           </div>
           <div class="section-area">
             <div class="section-B">
               <div class="box-text">
-                <h1>Our Services</h1>
+                <h1>Day & Night Parking</h1>
                 <p>
-                  We provide the best quality coffee, comfort, and respect to
-                  all customers. We also have services ranging from hosting
-                  events such as karaoke, birthday parties, and game nights, as
-                  well as providing free 24/7 parking.
+                  We allow any customer 24/7 parking on our block as long as you
+                  are a customer signed up on our email list. However, it is
+                  first-come-first-serve so you have to be quick or else someone
+                  might take your spot!
                 </p>
               </div>
               <div class="box-img">
-                <img src="../img/services.jpg" alt="Services" />
+                <img src="../img/parking.jpg" alt="Parking" />
               </div>
             </div>
           </div>
           <div class="section-area">
             <div class="section-C">
               <div class="box-text">
-                <h1>Menu</h1>
+                <h1>Venue for Parties</h1>
                 <p>
-                  Our menu is guarenteed to contain the morning coffee you need
-                  to start your day. From our classic Caffè Americano to four
-                  types of Roast or one of our Espressos, you will find
-                  something to get the morning energy you need while enjoying
-                  every sip.
+                  We can host any parties for you or your loved ones! We provide
+                  the foods from donuts to birthday cakes. We also can play
+                  music, provide games, and much more!
                 </p>
               </div>
               <div class="box-img">
-                <img src="img/menu.jpg" alt="Menu" />
+                <img src="../img/venue.jpg" alt="Venue" />
               </div>
             </div>
           </div>

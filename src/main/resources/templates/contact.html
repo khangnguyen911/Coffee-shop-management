@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drip Cafe - Home</title>
+    <title>Drip Cafe - Contact</title>
     <link th:href = "@{/css/style.css}" rel="stylesheet">
     <script type="text/javascript" th:src = "@{/js/script.js}"></script>
     <script type="text/javascript" th:src = "@{/js/menu.js}"></script>
@@ -13,6 +13,7 @@
     
     <link rel="icon" href="img/favicon.png" />
   </head>
+
   <body>
     <header>
       <div class="second-header">
@@ -24,7 +25,7 @@
           <ul class="menu-nav">
             <li class="menu-nav__item">
               <a href="index.html" class="logo menu-nav__link">
-                <img src="img/favicon.png" />
+                <img src="../img/favicon.png" />
                 <span class="logo-first">Drip</span>
                 <span class="logo-last">Cafe</span>
               </a>
@@ -40,17 +41,25 @@
               </a>
             </li>
             <br />
+            <li class="menu-nav__item">
+              <a href="index.html" class="menu-nav__link">
+                Home
+              </a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="menu.html" class="menu-nav__link">
+                Menu
+              </a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="services.html" class="menu-nav__link">
+                Services
+              </a>
+            </li>
             <li class="menu-nav__item active">
-              <a href="index.html" class="menu-nav__link"> Home </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="menu.html" class="menu-nav__link"> Menu </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="services.html" class="menu-nav__link"> Services </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="contact.html" class="menu-nav__link"> Contact </a>
+              <a href="contact.html" class="menu-nav__link">
+                Contact
+              </a>
             </li>
             <li class="menu-nav__item">
               <a href="#!" class="menu-nav__link cart__openBtn">
@@ -85,93 +94,57 @@
           <div class="item10-display"></div>
           <div class="item11-display"></div>
           <div class="item12-display"></div>
-          <div class="total"></div>
+          <div class="total">
+            <br />
+            <br />
+            Your Shopping Cart is empty. <br />
+            Add items to cart by hovering over/tapping on the images of products
+            on the Menu page.
+          </div>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="home">
+      <section class="contact">
         <div class="pic-area">
           <div class="pic-area-text">
-            <h2>Welcome to</h2>
+            <h2>Methods to</h2>
             <h1 class="home__name">
-              <span class="logo-first">Drip</span>
-              <span class="logo-last">Cafe</span>
+              Contact Us
             </h1>
-            <h3>Where coffee and comfort come together</h3>
-            <a href="menu.html">
-              <button class="btn-order">Order Now!</button>
-            </a>
-          </div>
-        </div>
-        <div class="main-area">
-          <div class="section-area">
-            <div class="section-A">
-              <div class="box-text">
-                <h1>Who We Are</h1>
-                <p>
-                  51900833 - Bui Cong Thanh
-                  51900830 - Nguyen Minh Tan
-                  51900801 - Nguyen Phuc Duy Khang
-                </p>
+            <h3>One email, phone call, or block away.</h3>
+            <div class="sections">
+              <div class="sections-section">
+                <i class="fas fa-envelope"></i> Email
+                <p>dripcafe@email.com</p>
               </div>
-              <div class="box-img">
-                <img src="img/who-we-are.jpg" alt="Who We Are" />
+              <div class="sections-section">
+                <i class="fas fa-mobile-alt"></i> Phone
+                <p>+1 (541) 741-5527</p>
+              </div>
+              <div class="sections-section">
+                <i class="fas fa-map-marker-alt"></i> Address
+                <p>351 New York City, NY</p>
               </div>
             </div>
-          </div>
-          <div class="section-area">
-            <div class="section-B">
-              <div class="box-text">
-                <h1>Our Services</h1>
-                <p>
-                  We provide the best quality coffee, comfort, and respect to
-                  all customers. We also have services ranging from hosting
-                  events such as karaoke, birthday parties, and game nights, as
-                  well as providing free 24/7 parking.
-                </p>
-              </div>
-              <div class="box-img">
-                <img src="../img/services.jpg" alt="Services" />
-              </div>
+            <div class="icons">
+              <a href="#!">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#!">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="#!">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#!">
+                <i class="fab fa-snapchat-square"></i>
+              </a>
             </div>
-          </div>
-          <div class="section-area">
-            <div class="section-C">
-              <div class="box-text">
-                <h1>Menu</h1>
-                <p>
-                  Our menu is guarenteed to contain the morning coffee you need
-                  to start your day. From our classic Caffè Americano to four
-                  types of Roast or one of our Espressos, you will find
-                  something to get the morning energy you need while enjoying
-                  every sip.
-                </p>
-              </div>
-              <div class="box-img">
-                <img src="img/menu.jpg" alt="Menu" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <footer>
-          <div class="icons">
-            <a href="#!">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#!">
-              <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#!">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#!">
-              <i class="fab fa-snapchat-square"></i>
-            </a>
           </div>
           <div class="copyright">&copy; Copyright 2020</div>
-        </footer>
+        </div>
       </section>
     </main>
     <script src="../js/script.js"></script>
