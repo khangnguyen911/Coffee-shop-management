@@ -63,35 +63,16 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("employee/updateEmployee")
-	public String doUpdateCustomer(@ModelAttribute("Employee") Employee employee, Model model) {
+	public String doUpdateEmployee(@ModelAttribute("Employee") Employee employee, Model model) {
 		employeeRepository.save(employee);
 		model.addAttribute("employee/list-employee", employeeRepository.findAll());
 		return "redirect:/employee/list-employee";
 	}
 	
 	@RequestMapping("employee/employeeDelete/{id}")
-	public String doDeleteCustomer(@PathVariable int id, Model model) {
+	public String doDeleteEmployee(@PathVariable int id, Model model) {
 		employeeRepository.deleteById(id);
 		model.addAttribute("listEmployee", employeeRepository.findAll());
 		return "redirect:/employee/list-employee";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-
-	@RequestMapping("/saveEmployee")
-	public String doSaveEmployee(@ModelAttribute("Employee") Employee employee, Model model) {
-		employeeRepository.save(employee);
-		model.addAttribute("listEmployee", employeeRepository.findAll());
-		return "employee-list";
-	}
-
-	
-
-	
 }

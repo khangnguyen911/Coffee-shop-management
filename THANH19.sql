@@ -9,3 +9,14 @@ CREATE TABLE `THANH19`.`tbl_employees` (
   `bophan` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `THANH19`.`tbl_product` (
+  `id` int(15) NOT NULL AUTO_INCREMENT,
+  `tensanpham` varchar(95) DEFAULT NULL,
+  `mota` varchar(95) DEFAULT NULL,
+  `hinhanh` varchar(95) DEFAULT NULL,
+  `thanhphan` varchar(55) DEFAULT NULL,
+  `danhmuc` varchar(75) DEFAULT NULL,
+  `giaban` int(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
