@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import tdtu.edu.demo.entities.Product;
+import tdtu.edu.demo.entity.Product;
 import tdtu.edu.demo.repository.ProductRepository;
 
 @Controller

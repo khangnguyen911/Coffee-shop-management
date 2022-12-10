@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-	@GetMapping("/")
+	// Phương thức xử lý yêu cầu đến trang chủ
+	@GetMapping({"/index", "/"})
 	public String getIndex() {
 		return "index";
 	}
@@ -16,9 +17,9 @@ public class HomeController {
 		return "menu";
 	}
 	
-	@GetMapping("/service")
+	@GetMapping("/services")
 	public String getService() {
-		return "service";
+		return "services";
 	}
 	
 	@GetMapping("/contact")
