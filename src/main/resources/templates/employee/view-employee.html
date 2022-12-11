@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -76,28 +77,28 @@
 				<td><p th:text="${employee.id}"/></td>
 			</tr>
 			<tr>
-				<td>Ho: </td>
-				<td><p th:text="${employee.ho}"/></td>
+				<td>First name</td>
+				<td><p th:text="${employee.firstname}"/></td>
 			</tr>
 			<tr>
-				<td>Ten: </td>
-				<td><p th:text="${employee.ten}"/></td>
+				<td>Last name</td>
+				<td><p th:text="${employee.lastname}"/></td>
 			</tr>
 			<tr>
-				<td>Tuoi: </td>
-				<td><p th:text="${employee.tuoi}"/></td>
+				<td>Age</td>
+				<td><p th:text="${employee.age}"/></td>
 			</tr>
 			<tr>
 				<td>Email: </td>
 				<td><p th:text="${employee.email}"/></td>
 			</tr>
 			<tr>
-				<td>Dia chi: </td>
-				<td><p th:text="${employee.diachi}"/></td>
+				<td>Address</td>
+				<td><p th:text="${employee.address}"/></td>
 			</tr>
 			<tr>
-				<td>Bo Phan: </td>
-				<td><p th:text="${employee.bophan}"/></td>
+				<td>Job</td>
+				<td><p th:text="${employee.position}"/></td>
 			</tr>
 			</tbody>
 		</table>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-				xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
+	xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Home page</title>
+<title>Home page - User</title>
 <link th:href="@{/css/style.css}" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,13 +28,7 @@
 						class="logo menu-nav__link"> <img src="img/favicon.png" /> <span
 							class="logo-first">Coffee</span> <span class="logo-last">shop</span>
 					</a></li>
-					<li class="menu-nav__item"><a th:href="@{/account/login}"
-						class="sign-in menu-nav__link"> <i class="fa fa-user"
-							aria-hidden="true"></i> Sign In
-					</a> <span class="menu-nav__link" id="slash">/</span> <a
-						th:href="@{/account/register}" class="sign-up menu-nav__link"> Sign Up </a></li>
-					<br />
-					<li class="menu-nav__item active"><a th:href="@{/}"
+					<li class="menu-nav__item active"><a th:href="@{/home-user}"
 						class="menu-nav__link"> Home </a></li>
 					<li class="menu-nav__item"><a th:href="@{/menu}"
 						class="menu-nav__link"> Menu </a></li>
@@ -46,7 +40,13 @@
 						class="menu-nav__link cart__openBtn"> <i
 							class="fa fa-cart-plus" aria-hidden="true"></i>
 					</a></li>
+					<li class="menu-nav__link"><a>Welcome</a></li>
+					<li><form th:action="@{/logout}" method="post"
+							class="menu-nav__item">
+							<input type="submit" class="menu-nav__link" value="Logout">
+						</form></li>
 				</ul>
+
 			</nav>
 		</div>
 		<!-- Shopping Cart -->
@@ -149,6 +149,8 @@
 	</main>
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
 	<script type="text/javascript" th:src="@{/js/menu.js}"></script>
-	<script type="text/javascript" th:src="@{https://kit.fontawesome.com/c057664144.js}" crossorigin="anonymous"></script>
+	<script type="text/javascript"
+		th:src="@{https://kit.fontawesome.com/c057664144.js}"
+		crossorigin="anonymous"></script>
 </body>
 </html>

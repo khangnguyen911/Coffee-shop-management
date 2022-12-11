@@ -1,10 +1,15 @@
 package tdtu.edu.demo.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import tdtu.edu.demo.entity.Role;
 import tdtu.edu.demo.entity.User;
 
 public class CustomUserDetails implements UserDetails{
@@ -18,7 +23,25 @@ public class CustomUserDetails implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return null;
+		Set<Role> roles = user.getRoles();
+		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		
+		for(Role role : roles) {
+			authorities.add(new SimpleGrantedAuthority(role.getName()));
+		}
+		
+		return authorities;
+	}
+	
+	/*
+	 * Spring Security will return a new instance of this UserDetails class upon successful authentication. 
+	 * 
+	 * This class wraps an instance of User so the hasRole() method here simply delegates the call to the User class.
+	 * 
+	 */
+	
+	public boolean hasRole(String roleName) {
+		return this.user.hasRole(roleName);
 	}
 
 	@Override
@@ -30,7 +53,7 @@ public class CustomUserDetails implements UserDetails{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return user.getEmail();
+		return user.getUsername();
 	}
 
 	@Override
@@ -54,6 +77,7 @@ public class CustomUserDetails implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
+//		return user.isEnabled();
 		return true;
 	}
 	

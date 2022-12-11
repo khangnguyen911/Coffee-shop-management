@@ -26,4 +26,24 @@ public class HomeController {
 	public String getContact() {
 		return "contact";
 	}
+	
+	@GetMapping("/home-user")
+	public String getHomeUser() {
+		return "home-user";
+	}
+	
+	@GetMapping("/home-editor")
+	public String getHomeEditor() {
+		return "home-editor";
+	}
+	
+	@GetMapping("/home-creator")
+	public String getHomeCreator() {
+		return "home-creator";
+	}
+	
+	@GetMapping("/home-admin")
+	public String getHomeAdmin() {
+		return "home-admin";
+	}
 }

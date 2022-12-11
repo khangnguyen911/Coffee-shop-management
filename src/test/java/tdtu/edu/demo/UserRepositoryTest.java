@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
 import tdtu.edu.demo.entity.User;
+import tdtu.edu.demo.repository.RoleRepository;
 import tdtu.edu.demo.repository.UserRepository;
 
 @DataJpaTest
@@ -22,6 +23,9 @@ public class UserRepositoryTest {
 	private UserRepository userRepository;
 	
 	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
 	private TestEntityManager entityManager;
 	
 	@Test
@@ -31,21 +35,31 @@ public class UserRepositoryTest {
 		user.setEmail("khang@gmail.com");
 		user.setFirstname("Khang");
 		user.setLastname("Nguyen");
+		user.setUsername("npdkhang");
 		user.setPassword("1234");
 		
 		User savedUser = userRepository.save(user);
 		
-		User existedUser = entityManager.find(User.class, savedUser.getId());
+		User existedUser = entityManager.find(User.class, savedUser.getUser_id());
 		
 		assertThat(existedUser.getEmail()).isEqualTo(user.getEmail());
 	}
 	
 	@Test
-	public void testFindUserByEmail() {
-		String email = "khang@gmail.com";
+	public void testGetUserByUsername() {
+		String username = "npdkhang";
 		
-		User user = userRepository.findByEmail(email);
+		User user = userRepository.getUserByUsername(username);
 		
 		assertThat(user).isNotNull();
 	}
+	
+//	@Test
+//	public void testFindUserByEmail() {
+//		String email = "khang@gmail.com";
+//		
+//		User user = userRepository.findByEmail(email);
+//		
+//		assertThat(user).isNotNull();
+//	}
 }

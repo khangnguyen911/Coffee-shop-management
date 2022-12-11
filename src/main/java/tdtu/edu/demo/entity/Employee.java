@@ -22,21 +22,21 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "ho")
-	private String ho;
+	@Column(name = "firstname")
+	private String firstname;
 	
-	@Column(name = "ten")
-	private String ten;
+	@Column(name = "lastname")
+	private String lastname;
 	
-	@Column(name = "tuoi")
-	private int tuoi;
+	@Column(name = "age")
+	private int age;
 	
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "diachi")
-	private String diachi;
+	@Column(name = "address")
+	private String address;
 	
-	@Column(name = "bophan")
-	private String bophan;
+	@Column(name = "position")
+	private String position;
 }

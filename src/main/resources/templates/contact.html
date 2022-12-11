@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,52 +23,30 @@
         </div>
 
         <nav class="nav">
-          <ul class="menu-nav">
-            <li class="menu-nav__item">
-              <a href="index.html" class="logo menu-nav__link">
-                <img src="../img/favicon.png" />
-                <span class="logo-first">Drip</span>
-                <span class="logo-last">Cafe</span>
-              </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="sign-in.html" class="sign-in menu-nav__link">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                Sign In
-              </a>
-              <span class="menu-nav__link" id="slash">/</span>
-              <a href="sign-up.html" class="sign-up menu-nav__link">
-                Sign Up
-              </a>
-            </li>
-            <br />
-            <li class="menu-nav__item">
-              <a href="index.html" class="menu-nav__link">
-                Home
-              </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="menu.html" class="menu-nav__link">
-                Menu
-              </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="services.html" class="menu-nav__link">
-                Services
-              </a>
-            </li>
-            <li class="menu-nav__item active">
-              <a href="contact.html" class="menu-nav__link">
-                Contact
-              </a>
-            </li>
-            <li class="menu-nav__item">
-              <a href="#!" class="menu-nav__link cart__openBtn">
-                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
+				<ul class="menu-nav">
+					<li class="menu-nav__item"><a th:href="@{/index}"
+						class="logo menu-nav__link"> <img src="img/favicon.png" /> <span
+							class="logo-first">Coffee</span> <span class="logo-last">shop</span>
+					</a></li>
+					<li class="menu-nav__item active"><a th:href="@{/home-user}"
+						class="menu-nav__link"> Home </a></li>
+					<li class="menu-nav__item"><a th:href="@{/menu}"
+						class="menu-nav__link"> Menu </a></li>
+					<li class="menu-nav__item"><a th:href="@{/services}"
+						class="menu-nav__link"> Services </a></li>
+					<li class="menu-nav__item"><a th:href="@{/contact}"
+						class="menu-nav__link"> Contact </a></li>
+					<li class="menu-nav__item"><a href="#!"
+						class="menu-nav__link cart__openBtn"> <i
+							class="fa fa-cart-plus" aria-hidden="true"></i>
+					</a></li>
+					<li class="menu-nav__link"><a>Welcome</a></li>
+					<li><form th:action="@{/logout}" method="post"
+							class="menu-nav__item">
+							<input type="submit" class="menu-nav__link" value="Logout">
+						</form></li>
+				</ul>
+			</nav>
       </div>
       <!-- Shopping Cart -->
       <div class="cart-overlay">
@@ -117,15 +96,15 @@
             <div class="sections">
               <div class="sections-section">
                 <i class="fas fa-envelope"></i> Email
-                <p>dripcafe@email.com</p>
+                <p>51900801@student.tdtu.edu.vn</p>
               </div>
               <div class="sections-section">
                 <i class="fas fa-mobile-alt"></i> Phone
-                <p>+1 (541) 741-5527</p>
+                <p>0123 789 456</p>
               </div>
               <div class="sections-section">
                 <i class="fas fa-map-marker-alt"></i> Address
-                <p>351 New York City, NY</p>
+                <p>Thanh pho Ho Chi Minh</p>
               </div>
             </div>
             <div class="icons">

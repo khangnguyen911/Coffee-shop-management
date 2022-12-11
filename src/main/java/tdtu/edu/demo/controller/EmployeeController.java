@@ -75,4 +75,9 @@ public class EmployeeController {
 		model.addAttribute("listEmployee", employeeRepository.findAll());
 		return "redirect:/employee/list-employee";
 	}
+	
+	@RequestMapping("/403")
+	public String error() {
+		return "403";
+	}
 }

@@ -1,7 +1,5 @@
 package tdtu.edu.demo.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,13 +12,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import tdtu.edu.demo.service.CustomUserDetailsService;
+import tdtu.edu.demo.service.HandleLoginSuccess;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
 	
 	@Autowired
-	private DataSource dataSource;
+	private HandleLoginSuccess handleLoginSuccess;
 	
 	@Bean
 	public UserDetailsService userDetailsService() {
@@ -41,6 +40,7 @@ public class SpringSecurityConfig {
 		return daoAuthenticationProvider;
 	}
 	
+	
 	protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) {
 		authenticationManagerBuilder.authenticationProvider(daoAuthenticationProvider());
 	}
@@ -48,16 +48,39 @@ public class SpringSecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 		
-		httpSecurity.authorizeHttpRequests().requestMatchers("/users")
-		.authenticated().anyRequest().permitAll()
-		.and()
-		.formLogin()
-			.usernameParameter("email")
-			.defaultSuccessUrl("/account/users")
-			.permitAll()
-		.and()
-		.logout()
-			.logoutSuccessUrl("/account/").permitAll();
+		httpSecurity.authorizeHttpRequests()
+			.requestMatchers("/employee/list-employee", "/account/users").hasAnyAuthority("CREATOR", "EDITOR", "ADMIN")
+			.requestMatchers("/employee/add-employee").hasAnyAuthority("CREATOR", "ADMIN")
+			.requestMatchers("/employee/update-employee/**", "/account/users/edit/**").hasAnyAuthority("EDITOR", "ADMIN")
+			.requestMatchers("/employee/employeeDelete/**").hasAuthority("ADMIN")
+			.anyRequest().authenticated()
+			.and()
+			.formLogin()
+				.loginPage("/account/login")
+				.usernameParameter("username")
+				.passwordParameter("password")
+				.successHandler(handleLoginSuccess)
+				.permitAll()
+			.and()
+			.logout()
+				.logoutSuccessUrl("/account/login").permitAll()
+			.and()
+			.exceptionHandling().accessDeniedPage("/403")
+			;
+		
+//		httpSecurity.authorizeHttpRequests().requestMatchers("/account/users")
+//		.authenticated().anyRequest().permitAll()
+//		.and()
+//		.formLogin()
+//			.loginPage("/account/login")
+//			.usernameParameter("email")
+//			.passwordParameter("password")
+//			.permitAll()
+//			.defaultSuccessUrl("/account/users")
+////			.failureUrl("/account/login")
+//		.and()
+//		.logout()
+//			.logoutSuccessUrl("/account/login").permitAll();
 		
 		return httpSecurity.build();
 	}

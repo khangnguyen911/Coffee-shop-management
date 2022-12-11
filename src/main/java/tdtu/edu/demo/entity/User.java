@@ -1,10 +1,19 @@
 package tdtu.edu.demo.entity;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,20 +29,57 @@ import lombok.Setter;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer user_id;
 	
-	@Column(nullable = false, length = 55)
+	@Column(nullable = false, length = 64)
 	private String firstname;
 	
-	@Column(nullable = false, length = 55)
+	@Column(nullable = false, length = 64)
 	private String lastname;
 	
-	@Column(nullable = false, unique = true, length = 88)
-	private String email;
+	@Column(nullable = false, length = 64)
+	private String username;
 	
-	@Column(nullable = false, length = 66)
+	@Column(nullable = false, length = 64)
 	private String password;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true, length = 64)
+	private String email;
+	
+	@Column(nullable = false, length = 96)
 	private String address;
+	
+//	private boolean enabled;
+	
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "tbl_users_roles",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id")
+			)
+	private Set<Role> roles = new HashSet<>();
+	
+	public void addRole(Role role) {
+		this.roles.add(role);
+	}
+	
+	/*
+	 *  check if the currently logged-in user has a specific role or not.
+	 *  
+	 *  The hasRole() method will return true if the user is assigned with the specified role, or false otherwise
+	 */
+	
+	public boolean hasRole(String roleName) {
+		Iterator<Role> iterator = this.roles.iterator();
+		
+		while (iterator.hasNext()) {
+			Role role = iterator.next();
+			if(role.getName().equals(roleName)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }

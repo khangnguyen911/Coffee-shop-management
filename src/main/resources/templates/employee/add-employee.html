@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,12 +70,12 @@
 		<h1 class="text-center">Add Employee</h1>
 		<br />
 		<form th:action="@{/save-employee}" th:object="${employee}" method="POST">
-			<input type="text" th:field="*{ho}" placeholder="Nhap ho: " class="form-control col-4 mb-4" />
-			<input type="text" th:field="*{ten}" placeholder="Nhap ten: " class="form-control col-4 mb-4" />
-			<input type="number" th:field="*{tuoi}" placeholder="Nhap tuoi: " class="form-control col-4 mb-4" />
-			<input type="email" th:field="*{email}" placeholder="Nhap email: " class="form-control col-4 mb-4" />
-			<input type="text" th:field="*{diachi}" placeholder="Nhap dia chi: " class="form-control col-4 mb-4" />
-			<input type="text" th:field="*{bophan}" placeholder="Nhap bo phan: " class="form-control col-4 mb-4" />
+			<input type="text" th:field="*{firstname}" placeholder="Enter firstname: " class="form-control col-4 mb-4" />
+			<input type="text" th:field="*{lastname}" placeholder="Enter lastname: " class="form-control col-4 mb-4" />
+			<input type="number" th:field="*{age}" placeholder="Enter age: " class="form-control col-4 mb-4" />
+			<input type="email" th:field="*{email}" placeholder="Enter email: " class="form-control col-4 mb-4" />
+			<input type="text" th:field="*{address}" placeholder="Enter address: " class="form-control col-4 mb-4" />
+			<input type="text" th:field="*{position}" placeholder="Enter job: " class="form-control col-4 mb-4" />
 			<button class="btn btn-primary" type="submit">Save</button>
 		</form>
 		<hr />
