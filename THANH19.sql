@@ -3,23 +3,23 @@ USE `THANH19`;
 
 CREATE TABLE `THANH19`.`tbl_employees` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(64) DEFAULT NULL,
-  `lastname` varchar(64) DEFAULT NULL,
-  `age` int DEFAULT NULL,
-  `email` varchar(64) DEFAULT NULL,
-  `address` varchar(96) DEFAULT NULL,
-  `position` varchar(64) DEFAULT NULL,
+  `firstname` varchar(64) NOT NULL,
+  `lastname` varchar(64) NOT NULL,
+  `age` int NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `address` varchar(96) NOT NULL,
+  `position` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `THANH19`.`tbl_product` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
-  `name` varchar(96) DEFAULT NULL,
-  `description` varchar(128) DEFAULT NULL,
-  `image` varchar(64) DEFAULT NULL,
-  `ingredient` varchar(64) DEFAULT NULL,
-  `category` varchar(64) DEFAULT NULL,
-  `price` int(15) DEFAULT NULL,
+  `name` varchar(96) NOT NULL,
+  `description` varchar(128) NOT NULL,
+  `image` varchar(64) NOT NULL,
+  `ingredient` varchar(64) NOT NULL,
+  `category` varchar(64) NOT NULL,
+  `price` int(15) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -51,20 +51,39 @@ CREATE TABLE `THANH19`.`tbl_users_roles` (
   CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`user_id`)
 );
 
+INSERT INTO `tbl_employees` (`firstname`, `lastname`, `age`, `email`, `address`, `position`) 
+	VALUES ('Khang', 'Nguyen Phuc Duy', 22, 'khang@gmail.com', 'TPHCM', 'Phuc vu');
+INSERT INTO `tbl_employees` (`firstname`, `lastname`, `age`, `email`, `address`, `position`) 
+	VALUES ('Cong', 'Bui', 22, 'cong@gmail.com', 'TPHCM', 'Phuc vu');
+INSERT INTO `tbl_employees` (`firstname`, `lastname`, `age`, `email`, `address`, `position`) 
+	VALUES ('Thanh', 'Bui Cong', 23, 'thanh@gmail.com', 'TPHCM', 'Pha che');
+INSERT INTO `tbl_employees` (`firstname`, `lastname`, `age`, `email`, `address`, `position`) 
+	VALUES ('Phuc', 'Nguyen', 23, 'phuc@gmail.com', 'TPHCM', 'Pha che');
+INSERT INTO `tbl_employees` (`firstname`, `lastname`, `age`, `email`, `address`, `position`) 
+	VALUES ('Tan', 'Nguyen Minh', 24, 'tan@gmail.com', 'TPHCM', 'Thu ngan');
+INSERT INTO `tbl_employees` (`firstname`, `lastname`, `age`, `email`, `address`, `position`) 
+	VALUES ('Duy', 'Nguyen', 24, 'duy@gmail.com', 'TPHCM', 'Thu ngan');
+
 INSERT INTO `tbl_roles` (`name`) VALUES ('USER');
-INSERT INTO `tbl_roles` (`name`) VALUES ('CREATOR');
-INSERT INTO `tbl_roles` (`name`) VALUES ('EDITOR');
+INSERT INTO `tbl_roles` (`name`) VALUES ('MANAGER');
 INSERT INTO `tbl_roles` (`name`) VALUES ('ADMIN');
 
-INSERT INTO `tbl_users` (`username`, `password`, `enabled`) VALUES ('user', '$2a$10$2X11Jg/REQHvgOABIUGGU.C38P.jSGL7fvcRWXCYVL5k9z7wRMNQy', '1');
-INSERT INTO `tbl_users` (`username`, `password`, `enabled`) VALUES ('creator', '$2a$10$6A7g1L1Hw1M.aVqdorvXrumBjJCkWuL6EyJ9oMpBQ2xGXBJQ1S9t6', '1');
-INSERT INTO `tbl_users` (`username`, `password`, `enabled`) VALUES ('editor', '$2a$10$d1xXOMGyBHugrj6woE/Ziu2LSKz9igp0IBJd6AfFkMZyajy2dr/Ym', '1');
-INSERT INTO `tbl_users` (`username`, `password`, `enabled`) VALUES ('admin', '$2a$10$lXCq5fNe.oD1LBmnlIwHZORTq7kK5rMpFbfMQkQGBTMPU1U1C/Tt2', '1');
-INSERT INTO `tbl_users` (`username`, `password`, `enabled`) VALUES ('npdkhang', '$2a$10$JiNxSTUZlwsI1ndQ8ndf1eAlh6eQXuGXBEdYC1.bC9u7hxLZW9XuS', '1');
+INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
+	VALUES ('user', '1234', 'user', '$2a$10$2X11Jg/REQHvgOABIUGGU.C38P.jSGL7fvcRWXCYVL5k9z7wRMNQy', 'user1234@gmail.com', 'Sai Gon', '1');
+INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
+	VALUES ('manager', '4321', 'manager', '$2a$10$8M3n30x3TGZmfH.mhWSLLeuv2okxk.CCh3ppGeyrLEqx318BstCBC', 'manager4321@gmail.com', 'Sai Gon', '1');
+INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
+	VALUES ('admin', '2345', 'admin', '$2a$10$4rRjIxYxKRUI.qxzgOvuIeuEErQGlDLEbNA38AfAYYoEIe0jAYCZe', 'admin2345@gmail.com', 'Sai Gon', '1');
+INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
+	VALUES ('Khang', 'Nguyen Phuc Duy', 'npdkhang', '$2a$10$Y.TBVja2ZsMn3xzb1IxfsOH/t7y9ULmBpQRMmUgjXP/UMTHSOilia', 'npdkhang@gmail.com', 'TPHCM', '1');
+INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
+	VALUES ('Tan', 'Nguyen Minh', 'nminhtan', '$2a$10$vSj8XgUgsopxJGB6YzsUtOnbkDHEc9dHoIBDMHIwWA1Dqn6VFiuH6', 'nminhtan@gmail.com', 'TPHCM', '1');
+INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
+	VALUES ('Thanh', 'Bui Cong', 'buicthanh', '$2a$10$BKZVetEVREUQegZ504A3jeq6qCcdtUNRc5tovzVFt/NXc4gpbJR7a', 'buicthanh@gmail.com', 'TPHCM', '1');
 
 INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (1, 1);
 INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (2, 2);
 INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (3, 3);
-INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (4, 4);
-INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (5, 2);
+INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (4, 3);
 INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (5, 3);
+INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (6, 3);

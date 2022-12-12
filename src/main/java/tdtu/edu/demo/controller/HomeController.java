@@ -27,23 +27,63 @@ public class HomeController {
 		return "contact";
 	}
 	
-	@GetMapping("/home-user")
+	@GetMapping({"/user/home-user", "/user/", "/user/index"})
 	public String getHomeUser() {
-		return "home-user";
+		return "user/home-user";
 	}
 	
-	@GetMapping("/home-editor")
-	public String getHomeEditor() {
-		return "home-editor";
+	@GetMapping("/user/menu-user")
+	public String getMenuUser() {
+		return "user/menu-user";
 	}
 	
-	@GetMapping("/home-creator")
-	public String getHomeCreator() {
-		return "home-creator";
+	@GetMapping("/user/contact-user")
+	public String getContactUser() {
+		return "user/contact-user";
 	}
 	
-	@GetMapping("/home-admin")
+	@GetMapping("/user/services-user")
+	public String getServicesUser() {
+		return "user/services-user";
+	}
+	
+	@GetMapping({"/manager/home-manager", "/manager/", "/manager/index"})
+	public String getHomeManager() {
+		return "manager/home-manager";
+	}
+	
+	@GetMapping("/manager/menu-manager")
+	public String getMenuManager() {
+		return "manager/menu-manager";
+	}
+	
+	@GetMapping("/manager/contact-manager")
+	public String getContactManager() {
+		return "manager/contact-manager";
+	}
+	
+	@GetMapping("/manager/services-manager")
+	public String getServicesManager() {
+		return "manager/services-manager";
+	}
+	
+	@GetMapping({"/admin/home-admin","/admin/"})
 	public String getHomeAdmin() {
-		return "home-admin";
+		return "admin/home-admin";
+	}
+	
+	@GetMapping("/admin/menu-admin")
+	public String getMenuAdmin() {
+		return "admin/menu-admin";
+	}
+	
+	@GetMapping("/admin/contact-admin")
+	public String getContactAdmin() {
+		return "admin/contact-admin";
+	}
+	
+	@GetMapping("/admin/services-admin")
+	public String getServicesAdmin() {
+		return "admin/services-admin";
 	}
 }

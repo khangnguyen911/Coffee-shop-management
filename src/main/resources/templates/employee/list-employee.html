@@ -49,8 +49,8 @@
 					th:href="@{../contact}">Contact <span class="sr-only">(current)</span></a>
 				</li>
 			</ul>
-			<div class="text-center">
-				Welcome 
+			<div sec:authorize="isAuthenticated()" class="mr-5">
+				Welcome <b sec:authentication="name" class="text-success"></b>
 			</div>
 			<form th:action="@{/logout}" method="post">
 		    	<input type="submit" class="btn btn-outline-danger" value="Logout">
@@ -73,7 +73,7 @@
 					<th>Email</th>
 					<th>Address</th>
 					<th>Job</th>
-					<th sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">Actions</th>
+					<th sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -99,9 +99,9 @@
 					<td>
 						<p th:text="${employee.position}"></p>
 					</td>
-					<td sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')"><a
+					<td sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')"><a
 						th:href="@{/employee/view-employee/} + ${employee.id}"
-						class="btn btn-info">View</a> <a
+						class="btn btn-info">View</a> <a 
 						th:href="@{/employee/update-employee/} + ${employee.id}"
 						class="btn btn-warning">Edit</a> <a sec:authorize="hasAnyAuthority('ADMIN')" 
 						th:href="@{/employee/employeeDelete/} + ${employee.id}"

@@ -28,13 +28,11 @@ public class HandleLoginSuccess extends SavedRequestAwareAuthenticationSuccessHa
 		String redirectedURL = request.getContextPath();
 		
 		if(customUserDetails.hasRole("USER")) {
-			redirectedURL = "../home-user";
-		} else if (customUserDetails.hasRole("CREATOR")) {
-			redirectedURL = "../home-creator";
-		} else if (customUserDetails.hasRole("EDITOR")) {
-			redirectedURL = "../home-editor";
+			redirectedURL = "/user/home-user";
+		} else if (customUserDetails.hasRole("MANAGER")) {
+			redirectedURL = "/manager/home-manager";
 		} else if (customUserDetails.hasRole("ADMIN")){
-			redirectedURL = "../home-admin";
+			redirectedURL = "/admin/home-admin";
 		}
 		
 		response.sendRedirect(redirectedURL);

@@ -49,11 +49,12 @@ public class SpringSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 		
 		httpSecurity.authorizeHttpRequests()
-			.requestMatchers("/employee/list-employee", "/account/users").hasAnyAuthority("CREATOR", "EDITOR", "ADMIN")
-			.requestMatchers("/employee/add-employee").hasAnyAuthority("CREATOR", "ADMIN")
-			.requestMatchers("/employee/update-employee/**", "/account/users/edit/**").hasAnyAuthority("EDITOR", "ADMIN")
-			.requestMatchers("/employee/employeeDelete/**").hasAuthority("ADMIN")
-			.anyRequest().authenticated()
+			.requestMatchers("/employee/list-employee", "/account/users", "/product/list-product",
+							"/employee/add-employee", "/product/add-product", "/home-manager",
+							"/employee/update-employee/**", "/account/users/edit/**", "product/update-product/**")
+			.hasAnyAuthority("MANAGER", "ADMIN")
+			.requestMatchers("/employee/employeeDelete/**", "/home-admin").hasAuthority("ADMIN")
+			.anyRequest().permitAll()
 			.and()
 			.formLogin()
 				.loginPage("/account/login")

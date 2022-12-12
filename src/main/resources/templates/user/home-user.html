@@ -24,25 +24,18 @@
 
 			<nav class="nav">
 				<ul class="menu-nav">
-					<li class="menu-nav__item"><a th:href="@{/index}"
+					<li class="menu-nav__item"><a th:href="@{/user/}"
 						class="logo menu-nav__link"> <img src="img/favicon.png" /> <span
 							class="logo-first">Coffee</span> <span class="logo-last">shop</span>
 					</a></li>
-					<li class="menu-nav__item active"><a th:href="@{/home-user}"
+					<li class="menu-nav__item active"><a th:href="@{/user/}"
 						class="menu-nav__link"> Home </a></li>
-					<li class="menu-nav__item"><a th:href="@{/menu}"
+					<li class="menu-nav__item"><a th:href="@{/user/menu-user}"
 						class="menu-nav__link"> Menu </a></li>
-					<li class="menu-nav__item"><a th:href="@{/services}"
+					<li class="menu-nav__item"><a th:href="@{/user/services-user}"
 						class="menu-nav__link"> Services </a></li>
-					<li class="menu-nav__item"><a th:href="@{/contact}"
+					<li class="menu-nav__item"><a th:href="@{/user/contact-user}"
 						class="menu-nav__link"> Contact </a></li>
-						
-					<li class="menu-nav__item"><a th:href="@{/account/users}"
-						class="menu-nav__link"> User </a></li>
-					<li class="menu-nav__item"><a th:href="@{/employee/}"
-						class="menu-nav__link"> Employee </a></li>
-					<li class="menu-nav__item"><a th:href="@{/product/}"
-						class="menu-nav__link"> Product </a></li>
 					<li class="menu-nav__link" sec:authorize="isAuthenticated()">
 						<a>Welcome <span sec:authentication="name"></span></a>
 					</li>
@@ -92,7 +85,7 @@
 						<span class="logo-first">Coffee</span> <span class="logo-last">Shop</span>
 					</h1>
 					<h3>Where coffee and comfort come together</h3>
-					<a th:href="@{/menu}">
+					<a th:href="@{/user/menu-user}">
 						<button class="btn-order">Order Now!</button>
 					</a>
 				</div>

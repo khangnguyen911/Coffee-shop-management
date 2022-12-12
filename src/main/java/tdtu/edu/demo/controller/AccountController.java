@@ -3,7 +3,6 @@ package tdtu.edu.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import tdtu.edu.demo.entity.Role;
 import tdtu.edu.demo.entity.User;
-import tdtu.edu.demo.repository.UserRepository;
 import tdtu.edu.demo.service.UserService;
 
 
@@ -64,7 +62,7 @@ public class AccountController {
 	
 	@GetMapping("/account/login")
 	public String login() {
-		return "/account/login";
+		return "account/login";
 	}
 	
 	
