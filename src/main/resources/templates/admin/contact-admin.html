@@ -43,8 +43,13 @@
 						class="menu-nav__link"> Employee </a></li>
 					<li class="menu-nav__item"><a th:href="@{/product/}"
 						class="menu-nav__link"> Product </a></li>
+				</ul>
+				<ul class="menu-nav">
 					<li class="menu-nav__link" sec:authorize="isAuthenticated()">
 						<a>Welcome <span sec:authentication="name"></span></a>
+					</li>
+					<li class="menu-nav__link">
+						<a>Role: <b sec:authentication="principal.authorities"></b></a>
 					</li>
 					<li><form th:action="@{/logout}" method="post"
 							class="menu-nav__item">

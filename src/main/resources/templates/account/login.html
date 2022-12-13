@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 <title>Login</title>
 <link th:href="@{/css/style.css}" rel="stylesheet">
 <link rel="stylesheet"
@@ -22,8 +22,8 @@
 <link rel="icon" href="img/favicon.png" />
 </head>
 
-<body>
-	<nav class="navbar navbar-expand-lg navbar-primary bg-light">
+<body class="bg-primary">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 		<a class="navbar-brand" th:href="@{../}">Coffee shop</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -49,18 +49,15 @@
 			<div sec:authorize="isAuthenticated()" class="mr-5">
 				Welcome <b sec:authentication="name" class="text-success"></b>
 			</div>
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" class="btn btn-outline-danger" value="Logout">
-			</form>
 		</div>
 	</nav>
 
-	<div class="container text-center mb-5">
+	<div class="container text-center mb-3">
 		<div>
-			        <img class="img-fluid" th:src="@{/img/favicon.png}" />     
+			<img class="img-fluid m-3" th:src="@{/img/favicon.png}" />     
 		</div>
-		<div class="row">
-			<div class="col-md-6 offset-md-3">
+		<div class="row ">
+			<div class="col-md-6 offset-md-3 mb-5">
 
 				<div th:if="${param.error}">
 					<div class="alert alert-danger">Invalid User name or Password</div>
@@ -69,20 +66,20 @@
 					<div class="alert alert-success">You have been logged out.</div>
 				</div>
 
-				<div class="card">
+				<div class="card bg-warning">
 					<div class="card-header">
 						<h2 class="text-center">Login Form</h2>
 					</div>
 					<div class="card-body">
 						<form method="post" role="form" th:action="@{/account/login}"
 							class="form-horizontal">
-							<div class="form-group mb-3">
+							<div class="form-group mb-3 row">
 								<label class="control-label"> Username</label> <input
 									type="text" id="username" name="username" class="form-control"
 									placeholder="Enter username: " />
 							</div>
 
-							<div class="form-group mb-3">
+							<div class="form-group mb-3 row">
 								<label class="control-label"> Password</label> <input
 									type="password" id="password" name="password"
 									class="form-control" placeholder="Enter password: " />
@@ -91,8 +88,11 @@
 								<button type="submit" class="btn btn-primary">Submit</button>
 							</div>
 							<div>
-								Not registered ? <a th:href="@{/account/register}">Register/Signup
-									here</a> </span>
+								<input type="checkbox" name="remember-me"/>
+								<label class="control-label">Remember me</label>
+							</div>
+							<div>
+								Not registered ? <a th:href="@{/account/register}">Register here</a>
 							</div>
 						</form>
 					</div>

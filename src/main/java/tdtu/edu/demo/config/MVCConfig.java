@@ -1,18 +1,17 @@
 package tdtu.edu.demo.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+@Configuration
 public class MVCConfig implements WebMvcConfigurer{
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		// TODO Auto-generated method stub
 		registry.addViewController("/").setViewName("index");
-		registry.addViewController("/../home-user").setViewName("home-user");
-		registry.addViewController("/../home-creator").setViewName("home-creator");
-		registry.addViewController("/../home-editor").setViewName("home-editor");
-		registry.addViewController("/../home-admin").setViewName("home-admin");
+		registry.addViewController("/account/logout-success").setViewName("/account/logout-success");
 	}
 
 }

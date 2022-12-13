@@ -25,6 +25,8 @@ public class HandleLoginSuccess extends SavedRequestAwareAuthenticationSuccessHa
 		// TODO Auto-generated method stub
 		CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
 		
+		System.out.println("User name: "+authentication.getName()+" logged in !!!");
+		
 		String redirectedURL = request.getContextPath();
 		
 		if(customUserDetails.hasRole("USER")) {

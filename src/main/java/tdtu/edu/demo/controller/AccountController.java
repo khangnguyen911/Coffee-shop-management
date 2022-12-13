@@ -3,12 +3,16 @@ package tdtu.edu.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
 import tdtu.edu.demo.entity.Role;
 import tdtu.edu.demo.entity.User;
 import tdtu.edu.demo.service.UserService;
@@ -60,10 +64,21 @@ public class AccountController {
 		return "redirect:/account/users";
 	}
 	
+	
+	// Prevent User from Going Back to Login Page if Already logged in
 	@GetMapping("/account/login")
-	public String login() {
-		return "account/login";
+	public String login(Model model, HttpServletRequest httpServletRequest) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+			return "account/login";	
+		} else {
+			if(httpServletRequest.isUserInRole("ADMIN")) {
+				return "redirect:/admin/";
+			} else if(httpServletRequest.isUserInRole("MANAGER")) {
+				return "redirect:/manager/";
+			}
+		}
+		
+		return "redirect:/user/";
 	}
-	
-	
 }
