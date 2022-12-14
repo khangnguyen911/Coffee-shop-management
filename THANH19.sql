@@ -82,6 +82,8 @@ INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email
 INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
 	VALUES ('Khang', 'Nguyen Phuc Duy', 'npdkhang', '$2a$10$Y.TBVja2ZsMn3xzb1IxfsOH/t7y9ULmBpQRMmUgjXP/UMTHSOilia', 'npdkhang@gmail.com', 'TPHCM', '1');
 INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
+	VALUES ('Khang', 'Nguyen Phuc Duy', 'npdkhang123', '$2a$10$Y.TBVja2ZsMn3xzb1IxfsOH/t7y9ULmBpQRMmUgjXP/UMTHSOilia', 'npdk09112001@gmail.com', 'TPHCM', '1');
+INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
 	VALUES ('Tan', 'Nguyen Minh', 'nminhtan', '$2a$10$vSj8XgUgsopxJGB6YzsUtOnbkDHEc9dHoIBDMHIwWA1Dqn6VFiuH6', 'nminhtan@gmail.com', 'TPHCM', '1');
 INSERT INTO `tbl_users` (`firstname`, `lastname`, `username`, `password`, `email`, `address`, `enabled`) 
 	VALUES ('Thanh', 'Bui Cong', 'buicthanh', '$2a$10$BKZVetEVREUQegZ504A3jeq6qCcdtUNRc5tovzVFt/NXc4gpbJR7a', 'buicthanh@gmail.com', 'TPHCM', '1');

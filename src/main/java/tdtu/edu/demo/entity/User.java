@@ -57,7 +57,7 @@ public class User {
 	private String verificationCode;
 	
 	private boolean enabled;
-	
+
 	@Column(name = "account_non_locked")
 	private boolean accountNonLocked;
 	
