@@ -10,17 +10,16 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tdtu.edu.demo.service.CustomUserDetailsService;
+import tdtu.edu.demo.service.HandleLoginFailure;
 import tdtu.edu.demo.service.HandleLoginSuccess;
 
 @Configuration
@@ -29,6 +28,9 @@ public class SpringSecurityConfig {
 	
 	@Autowired
 	private HandleLoginSuccess handleLoginSuccess;
+	
+	@Autowired
+	private HandleLoginFailure handleLoginFailure;
 	
 	@Bean
 	public UserDetailsService userDetailsService() {
@@ -71,22 +73,7 @@ public class SpringSecurityConfig {
 				.usernameParameter("username")
 				.passwordParameter("password")
 				.successHandler(handleLoginSuccess)
-				.failureHandler(new SimpleUrlAuthenticationFailureHandler() {
-					
-					@Override
-					public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-							AuthenticationException exception) throws IOException, ServletException {
-						// TODO Auto-generated method stub
-						String username = request.getParameter("username");
-						String errorString = exception.getMessage();
-						
-						System.out.println("Failed to login in username: "+username+"\n"
-								+ "Reason: "+errorString);
-						
-						super.setDefaultFailureUrl("/account/login?error");
-						super.onAuthenticationFailure(request, response, exception);
-					}
-				})
+				.failureHandler(handleLoginFailure)
 			
 			.and()
 			.logout()
@@ -104,7 +91,8 @@ public class SpringSecurityConfig {
 				})
 				.deleteCookies("JSESSIONID")
 			.and()
-			.exceptionHandling().accessDeniedPage("/403")
+			.exceptionHandling()
+				.accessDeniedPage("/403")
 			.and()
 			.rememberMe()
 				.tokenValiditySeconds(60*60) // expiration 1 hour

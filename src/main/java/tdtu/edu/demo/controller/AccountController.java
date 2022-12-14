@@ -1,8 +1,10 @@
 package tdtu.edu.demo.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import tdtu.edu.demo.entity.Role;
 import tdtu.edu.demo.entity.User;
+import tdtu.edu.demo.generate.Utility;
 import tdtu.edu.demo.service.UserService;
 
 
@@ -32,8 +36,10 @@ public class AccountController {
 	}
 	
 	@PostMapping("/account/register/save")
-	public String processRegister(User user) {
-		userService.saveUserWithDefaultRole(user);
+	public String processRegister(User user, HttpServletRequest httpServletRequest) throws UnsupportedEncodingException, MessagingException {
+		String siteURL = Utility.getSiteURL(httpServletRequest);
+		
+		userService.saveUserWithDefaultRole(user, siteURL);
 		
 		return "account/register-success";
 	}
@@ -80,5 +86,16 @@ public class AccountController {
 		}
 		
 		return "redirect:/user/";
+	}
+	
+	// send email to active user
+	@GetMapping("/account/verify")
+	public String getVerifyAccount(@Param("code") String code) {
+		boolean verified = userService.verify(code);
+		if(verified) {
+			return "account/verify-success";
+		} else {
+			return "account/verify-fail";
+		}
 	}
 }

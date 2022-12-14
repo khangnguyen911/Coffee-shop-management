@@ -1,6 +1,7 @@
 package tdtu.edu.demo;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +62,17 @@ public class UserRepositoryTest {
 		User user = userRepository.findByEmail(email);
 		
 		assertThat(user).isNotNull();
+	}
+	
+	@Test
+	public void testUpdateFailedAttempt() {
+		String usernameString = "npdkhang";
+		int faledAttempt = 1;
+		
+		userRepository.updateFailedAttempt(faledAttempt, usernameString);
+		
+		Integer userID = 4;
+		User user = entityManager.find(User.class, userID);
+		assertEquals(faledAttempt, user.getFailedAttempt());
 	}
 }

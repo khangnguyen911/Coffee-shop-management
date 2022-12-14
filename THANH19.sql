@@ -31,10 +31,12 @@ CREATE TABLE `THANH19`.`tbl_users` (
   `password` varchar(64) DEFAULT NULL,
   `email` varchar(64) DEFAULT NULL,
   `address` varchar(96) DEFAULT NULL,
-  `tokenresetpassword` varchar(64) DEFAULT NULL,
+  `verification_code` varchar(64) DEFAULT NULL,
   `enabled` tinyint(5) DEFAULT NULL,
-  `otp` varchar(64) DEFAULT NULL,
-  `otp_requested_time` datetime DEFAULT NULL,
+  `failed_attempt` tinyint(4) DEFAULT 0 NULL,
+  `account_non_locked` tinyint(4) DEFAULT 1 NULL,
+  `lock_time` datetime DEFAULT NULL,
+  `tokenresetpassword` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 );

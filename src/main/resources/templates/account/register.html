@@ -72,6 +72,7 @@
 					<div class="card-body">
 						<form method="post" role="form"
 							th:action="@{/account/register/save}" th:object="${user}">
+							<input type="hidden" name="code" th:value="${code}"/>
 							<div class="form-group mb-3 row">
 								<label class="form-label">First Name</label> <input
 									class="form-control" id="firstname" name="firstname"
