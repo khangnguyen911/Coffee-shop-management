@@ -1,5 +1,6 @@
 package tdtu.edu.demo.entity;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -51,8 +52,18 @@ public class User {
 	
 	@Column(length = 64, name = "tokenresetpassword")
 	private String tokenresetpassword;
+	
+	
 //	private boolean enabled;
 	
+	@Column(name = "account_non_locked")
+	private boolean accountNonLocked;
+	
+	@Column(name = "failed_attempt")
+	private int failedAttempt;
+	
+	@Column(name = "lock_time")
+	private Date lockTime;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(

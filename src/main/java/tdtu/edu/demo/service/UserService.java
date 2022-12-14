@@ -1,10 +1,12 @@
 package tdtu.edu.demo.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tdtu.edu.demo.entity.Role;
 import tdtu.edu.demo.entity.User;
@@ -13,8 +15,11 @@ import tdtu.edu.demo.repository.RoleRepository;
 import tdtu.edu.demo.repository.UserRepository;
 
 @Service
-//@Transactional
+@Transactional
 public class UserService {
+	public static final int MAX_FAILED_ATTEMPTS = 3;
+	
+	private static final long LOCK_DURATION = 3*60*1000; // 1 hours
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -76,4 +81,45 @@ public class UserService {
 		
 		userRepository.save(user);
 	}
+	
+	public User getUserByUsername(String username) {
+		return userRepository.getUserByUsername(username);
+	}
+
+	public void increaseFailedAttempt(User user) {
+		// TODO Auto-generated method stub
+		int newFailedAttempt = user.getFailedAttempt() + 1;
+		userRepository.updateFailedAttempt(newFailedAttempt, user.getUsername());
+	}
+	
+	public void resetFailedAttempt(String username) {
+		userRepository.updateFailedAttempt(0, username);
+	}
+
+	public void lockUser(User user) {
+		// TODO Auto-generated method stub
+		user.setAccountNonLocked(false);
+		user.setLockTime(new Date());
+		
+		userRepository.save(user);
+	}
+	
+	public boolean unlockUser(User user) {
+		long lockTimeMillis = user.getLockTime().getTime();
+		long currentTimeMillis = System.currentTimeMillis();
+		
+		if(lockTimeMillis + LOCK_DURATION < currentTimeMillis) {
+			user.setAccountNonLocked(true);
+			user.setLockTime(null);
+			user.setFailedAttempt(0);
+			
+			userRepository.save(user);
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
 }

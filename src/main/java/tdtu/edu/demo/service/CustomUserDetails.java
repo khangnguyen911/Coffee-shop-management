@@ -63,7 +63,7 @@ public class CustomUserDetails implements UserDetails{
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return true;
+		return user.isAccountNonLocked();
 	}
 
 	@Override
@@ -89,4 +89,7 @@ public class CustomUserDetails implements UserDetails{
 		return user.getFirstname()+" "+user.getLastname();
 	}
 
+	public User getUser() {
+		return this.user;
+	}
 }
