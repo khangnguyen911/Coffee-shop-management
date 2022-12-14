@@ -14,7 +14,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import jakarta.servlet.ServletException;
@@ -71,15 +71,20 @@ public class SpringSecurityConfig {
 				.usernameParameter("username")
 				.passwordParameter("password")
 				.successHandler(handleLoginSuccess)
-				.failureHandler(new AuthenticationFailureHandler() {
+				.failureHandler(new SimpleUrlAuthenticationFailureHandler() {
 					
 					@Override
 					public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 							AuthenticationException exception) throws IOException, ServletException {
 						// TODO Auto-generated method stub
-						System.out.println("Failed to login in !!! Please check your info");
+						String username = request.getParameter("username");
+						String errorString = exception.getMessage();
 						
-						response.sendRedirect("/account/login");
+						System.out.println("Failed to login in username: "+username+"\n"
+								+ "Reason: "+errorString);
+						
+						super.setDefaultFailureUrl("/account/login?error");
+						super.onAuthenticationFailure(request, response, exception);
 					}
 				})
 			
@@ -108,5 +113,4 @@ public class SpringSecurityConfig {
 		
 		return httpSecurity.build();
 	}
-
 }

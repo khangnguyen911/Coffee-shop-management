@@ -31,7 +31,10 @@ CREATE TABLE `THANH19`.`tbl_users` (
   `password` varchar(64) DEFAULT NULL,
   `email` varchar(64) DEFAULT NULL,
   `address` varchar(96) DEFAULT NULL,
+  `tokenresetpassword` varchar(64) DEFAULT NULL,
   `enabled` tinyint(5) DEFAULT NULL,
+  `otp` varchar(64) DEFAULT NULL,
+  `otp_requested_time` datetime DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 );

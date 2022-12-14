@@ -22,5 +22,13 @@ public class CustomUserDetailsService implements UserDetailsService{
 		}
 		return new CustomUserDetails(user);
 	}
+	
+	public UserDetails findByEmail(String email) throws UsernameNotFoundException {
+		User user = userRepository.findByEmail(email);
+		if(user == null) {
+			throw new UsernameNotFoundException("Email not found");
+		}
+		return new CustomUserDetails(user);
+	}
 
 }

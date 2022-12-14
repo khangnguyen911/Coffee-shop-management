@@ -49,6 +49,8 @@ public class User {
 	@Column(nullable = false, length = 96)
 	private String address;
 	
+	@Column(length = 64, name = "tokenresetpassword")
+	private String tokenresetpassword;
 //	private boolean enabled;
 	
 	

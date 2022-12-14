@@ -28,22 +28,22 @@ public class UserRepositoryTest {
 	@Autowired
 	private TestEntityManager entityManager;
 	
-	@Test
-	public void testCreateUser() {
-		User user = new User();
-		user.setAddress("TPHCM");
-		user.setEmail("khang@gmail.com");
-		user.setFirstname("Khang");
-		user.setLastname("Nguyen");
-		user.setUsername("npdkhang");
-		user.setPassword("1234");
-		
-		User savedUser = userRepository.save(user);
-		
-		User existedUser = entityManager.find(User.class, savedUser.getUser_id());
-		
-		assertThat(existedUser.getEmail()).isEqualTo(user.getEmail());
-	}
+//	@Test
+//	public void testCreateUser() {
+//		User user = new User();
+//		user.setAddress("TPHCM");
+//		user.setEmail("khang@gmail.com");
+//		user.setFirstname("Khang");
+//		user.setLastname("Nguyen");
+//		user.setUsername("npdkhang");
+//		user.setPassword("1234");
+//		
+//		User savedUser = userRepository.save(user);
+//		
+//		User existedUser = entityManager.find(User.class, savedUser.getUser_id());
+//		
+//		assertThat(existedUser.getEmail()).isEqualTo(user.getEmail());
+//	}
 	
 	@Test
 	public void testGetUserByUsername() {
@@ -54,12 +54,12 @@ public class UserRepositoryTest {
 		assertThat(user).isNotNull();
 	}
 	
-//	@Test
-//	public void testFindUserByEmail() {
-//		String email = "khang@gmail.com";
-//		
-//		User user = userRepository.findByEmail(email);
-//		
-//		assertThat(user).isNotNull();
-//	}
+	@Test
+	public void testFindUserByEmail() {
+		String email = "npdkhang@gmail.com";
+		
+		User user = userRepository.findByEmail(email);
+		
+		assertThat(user).isNotNull();
+	}
 }
