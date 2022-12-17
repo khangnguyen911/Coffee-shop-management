@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +21,7 @@ import net.bytebuddy.utility.RandomString;
 import tdtu.edu.demo.entity.Role;
 import tdtu.edu.demo.entity.User;
 import tdtu.edu.demo.exception.UserNotFoundException;
+import tdtu.edu.demo.repository.PagingAndSortingUserRepo;
 import tdtu.edu.demo.repository.RoleRepository;
 import tdtu.edu.demo.repository.UserRepository;
 
@@ -35,6 +40,9 @@ public class UserService {
 	
 	@Autowired
 	private JavaMailSender javaMailSender;
+	
+	@Autowired
+	private PagingAndSortingUserRepo pagingAndSortingUserRepo;
 	
 	public User saveUserWithDefaultRole(User user, String siteURL) throws UnsupportedEncodingException, MessagingException {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -79,8 +87,13 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
-	public List<User> listAll(){
-		return (List<User>) userRepository.findAll();
+	public Page<User> listAll(int pageNumber, String sortField, String sortDir){
+		
+		Sort sort = Sort.by(sortField);
+		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+		
+		Pageable pageable = PageRequest.of(pageNumber - 1, 3, sort);
+		return pagingAndSortingUserRepo.findAll(pageable);
 	}
 	
 	public User get(Integer id) {

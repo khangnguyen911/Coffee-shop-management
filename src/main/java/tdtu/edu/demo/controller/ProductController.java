@@ -13,46 +13,51 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import tdtu.edu.demo.entity.Employee;
 import tdtu.edu.demo.entity.Product;
 import tdtu.edu.demo.repository.ProductRepository;
+import tdtu.edu.demo.service.ProductService;
 
 @Controller
 public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 	
+	@Autowired
+	private ProductService productService;
+	
 	@GetMapping({"product/list-product", "product/"})
-	public ModelAndView showProduct() {
-		ModelAndView modelAndView = new ModelAndView("product/list-product");
-		List<Product> listProducts = productRepository.findAll();
-		modelAndView.addObject("products", listProducts);
-		return modelAndView;
+	public String showProduct(Model model) {
+		List<Product> listProducts = productService.listAll();
+		model.addAttribute("products", listProducts);
+		
+		return "product/list-product";
 	}
 	
 	@GetMapping("product/add-product")
-	public ModelAndView addProductForm() {
-		ModelAndView modelAndView = new ModelAndView("product/add-product");
-		Product newProduct = new Product();
-		modelAndView.addObject("product", newProduct);
-		return modelAndView;
+	public String addProductForm(Model model) {
+		Product product = new Product();
+		model.addAttribute("product", product);
+		
+		return "product/add-product";
 	}
 	
 	@PostMapping("/save-product")
-	public String saveProduct(@ModelAttribute Product product) {
-		productRepository.save(product);
+	public String saveProduct(@ModelAttribute("product") Product product) {
+		productService.save(product);
 		
 		return "redirect:/product/list-product";
 	}
 	
 	@RequestMapping("product/view-product/{id}")
-	public String viewProduct(@PathVariable int id, Model model) {
+	public String viewProduct(@PathVariable("id") int id, Model model) {
 		Optional<Product> product = productRepository.findById(id);
 		if (product.isPresent()) {
 			model.addAttribute("product", product.get());
 		}
 		return "product/view-product";
 	}
-
+	
 	@RequestMapping("product/update-product/{id}")
 	public String updateProduct(@PathVariable int id, Model model) {
 		Optional<Product> product = productRepository.findById(id);
@@ -69,10 +74,9 @@ public class ProductController {
 		return "redirect:/product/list-product";
 	}
 	
-//	@RequestMapping("employee/employeeDelete/{id}")
-//	public String doDeleteProduct(@PathVariable int id, Model model) {
-//		productRepository.deleteById(id);
-//		model.addAttribute("listProduct", productRepository.findAll());
-//		return "redirect:/product/list-product";
-//	}
+	@RequestMapping("product/delete/{id}")
+	public String deleteProductByID(@PathVariable("id") int id) {
+		productService.deleteProductById(id);
+		return "redirect:/product/list-product";
+	}
 }

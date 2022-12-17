@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-				xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
+	xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,45 +62,38 @@
 				Welcome <b sec:authentication="name" class="text-success"></b>
 			</div>
 			<form th:action="@{/logout}" method="post">
-		    	<input type="submit" class="btn btn-outline-danger" value="Logout">
-		    </form>
+				<input type="submit" class="btn btn-outline-danger" value="Logout">
+			</form>
 		</div>
 	</nav>
-	
+
 	<div class="container mt-5">
-		<a th:href="@{/product/list-product}" class="btn btn-primary">List Product</a>
-		<h1 class="text-center">View Product By Id</h1> 
-		<br/> <br/>
+		<a th:href="@{/product/list-product}" class="btn btn-primary">List
+			Product</a>
+		<h1 class="text-center">View Product By Id</h1>
+		<br /> <br />
 		<table class="table table-bordered table-striped">
 			<tbody>
 				<tr>
-				<td>Id: </td>
-				<td><p th:text="${product.id}"/></td>
-			</tr>
-			<tr>
-				<td>Ten san pham: </td>
-				<td><p th:text="${product.tensanpham}"/></td>
-			</tr>
-			<tr>
-				<td>Mo ta: </td>
-				<td><p th:text="${product.mota}"/></td>
-			</tr>
-			<tr>
-				<td>Hinh anh: </td>
-				<td><p th:text="${product.hinhanh}"/></td>
-			</tr>
-			<tr>
-				<td>Thanh phan: </td>
-				<td><p th:text="${product.thanhphan}"/></td>
-			</tr>
-			<tr>
-				<td>Danh muc: </td>
-				<td><p th:text="${product.danhmuc}"/></td>
-			</tr>
-			<tr>
-				<td>Gia ban: </td>
-				<td><p th:text="${product.giaban}"/></td>
-			</tr>
+					<td>Id:</td>
+					<td><p th:text="${product.id}" /></td>
+				</tr>
+				<tr>
+					<td>Name:</td>
+					<td><p th:text="${product.name}" /></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><p th:text="${product.description}" /></td>
+				</tr>
+				<tr>
+					<td>Ingredient:</td>
+					<td><p th:text="${product.ingredient}" /></td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td><p th:text="${product.price}" /></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

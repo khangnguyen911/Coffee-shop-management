@@ -28,14 +28,8 @@ public class Product {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "image")
-	private String image;
-	
 	@Column(name = "ingredient")
 	private String ingredient;
-	
-	@Column(name = "category")
-	private String category;
 	
 	@Column(name = "price")
 	private int price;

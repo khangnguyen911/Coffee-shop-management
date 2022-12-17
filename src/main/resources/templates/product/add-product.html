@@ -23,7 +23,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-primary bg-light">
-		<a class="navbar-brand" href="">Coffee shop</a>
+		<a class="navbar-brand" th:href="@{../}">Coffee shop</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -33,30 +33,17 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link" href="#">Menu
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link" href="#">Services
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link" href="#">Contact
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Account </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Register</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Login</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Forgot Account ?</a>
-						<div class="dropdown-divider"></div>
-					</div></li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{../}">Home <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{../menu}">Menu <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{../services}">Services <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{../contact}">Contact <span class="sr-only">(current)</span></a>
+				</li>
 			</ul>
 			<div sec:authorize="isAuthenticated()" class="mr-5">
 				Welcome <b sec:authentication="name" class="text-success"></b>
@@ -71,12 +58,14 @@
 		<h1 class="text-center">Add Product</h1>
 		<br />
 		<form th:action="@{/save-product}" th:object="${product}" method="POST">
-			<input type="text" th:field="*{tensanpham}" placeholder="Nhap Ten San Phan: " class="form-control col-4 mb-4" />
-			<input type="text" th:field="*{mota}" placeholder="Nhap mo ta: " class="form-control col-4 mb-4" />
-			<input type="text" th:field="*{hinhanh}" placeholder="Nhap hinh anh: " class="form-control col-4 mb-4" />
-			<input type="text" th:field="*{thanhphan}" placeholder="Nhap thanh phan: " class="form-control col-4 mb-4" />
-			<input type="text" th:field="*{danhmuc}" placeholder="Nhap danh muc: " class="form-control col-4 mb-4" />
-			<input type="number" th:field="*{giaban}" placeholder="Nhap gia ban: " class="form-control col-4 mb-4" />
+			<label>Name:</label>
+			<input type="text" th:field="*{name}" placeholder="Nhap Ten San Phan: " class="form-control col-4 mb-4" />
+			<label>Description:</label>
+			<input type="text" th:field="*{description}" placeholder="Nhap mo ta: " class="form-control col-4 mb-4" />
+			<label>Ingredient:</label>
+			<input type="text" th:field="*{ingredient}" placeholder="Nhap thanh phan: " class="form-control col-4 mb-4" />
+			<label>Price:</label>
+			<input type="number" th:field="*{price}" placeholder="Nhap gia ban: " class="form-control col-4 mb-4" />
 			<button class="btn btn-primary" type="submit">Save</button>
 		</form>
 		<hr />

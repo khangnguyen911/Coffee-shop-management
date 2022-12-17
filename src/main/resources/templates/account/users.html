@@ -42,28 +42,69 @@
 		<table class="table table-bordered table-hover">
 			<thead class="table-dark">
 				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Username</th>
-					<th>Email</th>
-					<th>Address</th>
-					<th>Roles</th>
+					<th>
+						<a th:href="@{'/account/page/' + ${currentPage} + '?sortField=user_id&sortDir=' + ${reverseSortDir}}">Id</a>
+					</th>
+					<th>
+						<a th:href="@{'/account/page/' + ${currentPage} + '?sortField=firstname&sortDir=' + ${reverseSortDir}}">First name</a>
+					</th>
+					<th>
+						<a th:href="@{'/account/page/' + ${currentPage} + '?sortField=lastname&sortDir=' + ${reverseSortDir}}">Last name</a>
+					</th>
+					<th>
+						<a th:href="@{'/account/page/' + ${currentPage} + '?sortField=username&sortDir=' + ${reverseSortDir}}">Username</a>
+					</th>
+					<th>
+						<a th:href="@{'/account/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">Email</a>
+					</th>
+					<th>
+						<a th:href="@{'/account/page/' + ${currentPage} + '?sortField=Address&sortDir=' + ${reverseSortDir}}">Address</a>
+					</th>
+					<th>
+						<a th:href="@{'/account/page/' + ${currentPage} + '?sortField=enabled&sortDir=' + ${reverseSortDir}}">Enabled</a>
+					</th>
+					<th>
+						<a th:href="@{'/account/page/' + ${currentPage} + '?sortField=roles&sortDir=' + ${reverseSortDir}}">Roles</a>
+					</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="user : ${listUsers}">
+					<td th:text="${user.user_id}"></td>
 					<td th:text="${user.firstname}"></td>
 					<td th:text="${user.lastname}"></td>
 					<td th:text="${user.username}"></td>
 					<td th:text="${user.email}"></td>
 					<td th:text="${user.address}"></td>
+					<td th:text="${user.enabled}"></td>
 					<td th:text="${user.roles}"></td>
 					<td><a th:href="@{/account/users/edit/}+ ${user.user_id}"
 						class="btn btn-outline-warning">Edit</a></td>
 				</tr>
 			</tbody>
 		</table>
+		<br/>
+		<div>Total Items: [[${totalItems}]] - Page: [[${currentPage}]] of [[${totalPages}]] 
+			&nbsp; - &nbsp;
+			<a th:if="${currentPage > 1}" th:href="@{'/account/page/1?sortField='+ ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+			<span th:unless="${currentPage > 1}">First</span>
+			&nbsp;
+			<a th:if="${currentPage > 1}" th:href="@{'/account/page/' + ${currentPage - 1} + '?sortField='+ ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+			<span th:unless="${currentPage > 1}">Previous</span>
+			&nbsp;
+			<span th:each="i : ${#numbers.sequence(1, totalPages)}">
+				<a th:if="${currentPage != i}" th:href="@{'/account/page/'+${i}} + '?sortField='+ ${sortField} + '&sortDir=' + ${sortDir}">[[${i}]]</a> &nbsp; &nbsp;
+				<span th:unless="${currentPage != i}">[[${i}]]</span>
+				&nbsp;
+			</span>
+			<a th:if="${currentPage < totalPages}" th:href="@{'/account/page/' + ${currentPage + 1} + '?sortField='+ ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+			<span th:unless="${currentPage < totalPages}">Next</span>
+			&nbsp;
+			<a th:if="${currentPage < totalPages}" th:href="@{'/account/page/' + ${totalPages} + '?sortField='+ ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+			<span th:unless="${currentPage < totalPages}">Last</span>
+		</div>
 	</div>
+	
 </body>
 </html>

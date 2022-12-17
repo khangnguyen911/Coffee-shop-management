@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-				xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
+	xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Home page</title>
 <link th:href="@{/css/style.css}" rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<script type="text/javascript" th:src="@{/js/menu.js}"></script>
 
 <link rel="icon" href="img/favicon.png" />
 </head>
@@ -32,7 +29,8 @@
 						class="sign-in menu-nav__link"> <i class="fa fa-user"
 							aria-hidden="true"></i> Sign In
 					</a> <span class="menu-nav__link" id="slash">/</span> <a
-						th:href="@{/account/register}" class="sign-up menu-nav__link"> Sign Up </a></li>
+						th:href="@{/account/register}" class="sign-up menu-nav__link">
+							Sign Up </a></li>
 					<br />
 					<li class="menu-nav__item active"><a th:href="@{/}"
 						class="menu-nav__link"> Home </a></li>
@@ -149,6 +147,8 @@
 	</main>
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
 	<script type="text/javascript" th:src="@{/js/menu.js}"></script>
-	<script type="text/javascript" th:src="@{https://kit.fontawesome.com/c057664144.js}" crossorigin="anonymous"></script>
+	<script type="text/javascript"
+		th:src="@{https://kit.fontawesome.com/c057664144.js}"
+		crossorigin="anonymous"></script>
 </body>
 </html>

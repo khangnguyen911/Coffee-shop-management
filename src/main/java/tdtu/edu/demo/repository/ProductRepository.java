@@ -8,5 +8,5 @@ import tdtu.edu.demo.entity.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer>{
-
+	
 }
