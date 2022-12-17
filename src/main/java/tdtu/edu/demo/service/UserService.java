@@ -92,7 +92,7 @@ public class UserService {
 		Sort sort = Sort.by(sortField);
 		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 		
-		Pageable pageable = PageRequest.of(pageNumber - 1, 3, sort);
+		Pageable pageable = PageRequest.of(pageNumber - 1, 5, sort);
 		return pagingAndSortingUserRepo.findAll(pageable);
 	}
 	
@@ -170,6 +170,7 @@ public class UserService {
 			user.setAccountNonLocked(true);
 			user.setLockTime(null);
 			user.setFailedAttempt(0);
+			user.setEnabled(true);
 			
 			userRepository.save(user);
 			
@@ -185,7 +186,7 @@ public class UserService {
 		if(user == null || user.isEnabled()) {
 			return false;
 		} else {
-			userRepository.enableUser(user.getUser_id());
+			userRepository.enableUser(user.getUserID());
 			user.setVerificationCode(null);
 			user.setEnabled(true);
 			userRepository.save(user);

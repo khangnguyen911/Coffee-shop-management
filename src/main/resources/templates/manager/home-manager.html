@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Home page - Manager</title>
-<link th:href="@{/css/style.css}" rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<link rel="icon" href="img/favicon.png" />
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Home page - Manager</title>
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<link rel="icon" href="img/favicon.png" />
 </head>
+
 <body>
 	<header>
 		<div class="second-header">
@@ -24,24 +23,20 @@
 
 			<nav class="nav">
 				<ul class="menu-nav">
-					<li class="menu-nav__item"><a th:href="@{/manager/}"
-						class="logo menu-nav__link"> <img src="img/favicon.png" /> <span
-							class="logo-first">Coffee</span> <span class="logo-last">shop</span>
-					</a></li>
-					<li class="menu-nav__item active"><a th:href="@{/manager/}"
-						class="menu-nav__link"> Home </a></li>
-					<li class="menu-nav__item"><a th:href="@{/manager/menu-manager}"
-						class="menu-nav__link"> Menu </a></li>
-					<li class="menu-nav__item"><a th:href="@{/manager/services-manager}"
-						class="menu-nav__link"> Services </a></li>
-					<li class="menu-nav__item"><a th:href="@{/manager/contact-manager}"
-						class="menu-nav__link"> Contact </a></li>
-					<li class="menu-nav__item"><a th:href="@{/account/users}"
-						class="menu-nav__link"> User </a></li>
-					<li class="menu-nav__item"><a th:href="@{/employee/}"
-						class="menu-nav__link"> Employee </a></li>
-					<li class="menu-nav__item"><a th:href="@{/product/}"
-						class="menu-nav__link"> Product </a></li>
+					<li class="menu-nav__item"><a th:href="@{/manager/}" class="logo menu-nav__link"> <img
+								src="img/favicon.png" /> <span class="logo-first">Coffee</span> <span
+								class="logo-last">shop</span>
+						</a></li>
+					<li class="menu-nav__item active"><a th:href="@{/manager/}" class="menu-nav__link"> Home </a></li>
+					<li class="menu-nav__item"><a th:href="@{/manager/menu-manager}" class="menu-nav__link"> Menu </a>
+					</li>
+					<li class="menu-nav__item"><a th:href="@{/manager/services-manager}" class="menu-nav__link">
+							Services </a></li>
+					<li class="menu-nav__item"><a th:href="@{/manager/contact-manager}" class="menu-nav__link"> Contact
+						</a></li>
+					<li class="menu-nav__item"><a th:href="@{/account/users}" class="menu-nav__link"> User </a></li>
+					<li class="menu-nav__item"><a th:href="@{/employee/}" class="menu-nav__link"> Employee </a></li>
+					<li class="menu-nav__item"><a th:href="@{/product/}" class="menu-nav__link"> Product </a></li>
 				</ul>
 				<ul class="menu-nav">
 					<li class="menu-nav__link" sec:authorize="isAuthenticated()">
@@ -50,10 +45,11 @@
 					<li class="menu-nav__link">
 						<a>Role: <b sec:authentication="principal.authorities"></b></a>
 					</li>
-					<li><form th:action="@{/logout}" method="post"
-							class="menu-nav__item">
+					<li>
+						<form th:action="@{/logout}" method="post" class="menu-nav__item">
 							<input type="submit" class="menu-nav__link" value="Logout">
-						</form></li>
+						</form>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -114,8 +110,8 @@
 	</main>
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
 	<script type="text/javascript" th:src="@{/js/menu.js}"></script>
-	<script type="text/javascript"
-		th:src="@{https://kit.fontawesome.com/c057664144.js}"
+	<script type="text/javascript" th:src="@{https://kit.fontawesome.com/c057664144.js}"
 		crossorigin="anonymous"></script>
 </body>
+
 </html>

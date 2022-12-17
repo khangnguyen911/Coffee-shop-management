@@ -60,8 +60,8 @@ public class SpringSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 		
 		httpSecurity.authorizeHttpRequests()
-			.requestMatchers("/employee/list-employee", "/account/users", "/product/list-product",
-							"/employee/add-employee", "/product/add-product", "/manager/**",
+			.requestMatchers("/employee/list-employee", "/account/users", "/account/", "/product/list-product",
+							"/employee/add-employee", "/product/add-product", "/manager/**", "/product/**", "/employee/**",
 							"/employee/update-employee/**", "/account/users/edit/**", "product/update-product/**")
 			.hasAnyAuthority("MANAGER", "ADMIN")
 			.requestMatchers("/employee/employeeDelete/**", "/admin/**", "/manager/**").hasAuthority("ADMIN")

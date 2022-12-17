@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-				xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
+	xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register Success</title>
-    <link th:href="@{/css/style.css}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.13.1/datatables.min.css" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Register Success</title>
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.13.1/datatables.min.css" />
 
-    <script type="text/javascript" th:src="@{/js/script.js}"></script>
-    <script type="text/javascript" th:src="@{/js/menu.js}"></script>
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+	<script type="text/javascript" th:src="@{/js/menu.js}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <link rel="icon" href="img/favicon.png" />
+	<link rel="icon" href="img/favicon.png" />
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-light">
-        <a class="navbar-brand" th:href="@{../}">Coffee shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+	<nav class="navbar navbar-expand-lg navbar-primary bg-light">
+		<a class="navbar-brand" th:href="@{../}">Coffee shop</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                	<a class="nav-link" th:href="@{../}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                	<a class="nav-link" th:href="@{../menu}">Menu <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                	<a class="nav-link" th:href="@{../services}">Services <span class="sr-only">(current)</span></a>
-             	</li>
-                <li class="nav-item active">
-                	<a class="nav-link" th:href="@{../contact}">Contact <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <div sec:authorize="isAuthenticated()" class="mr-5">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" th:href="@{../}">Home <span
+							class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link" th:href="@{../menu}">Menu <span
+							class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active"><a class="nav-link" th:href="@{../services}">Services <span
+							class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active"><a class="nav-link" th:href="@{../contact}">Contact <span
+							class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+			<div sec:authorize="isAuthenticated()" class="mr-5">
 				Welcome <b sec:authentication="name" class="text-success"></b>
 			</div>
-        </div>
-    </nav>
+		</div>
+	</nav>
 
-    <div class="container text-center">
+	<div class="container text-center">
 		<div>
 			<h2 class="text-success">You have sign up successfully !</h2>
-			<h3 class="text-primary">Please check your email to verify your account</h3>
+			<h3 class="text-primary">Please check your email to verify your
+				account</h3>
+			<div class="text-info">
+				Want to login ? <a th:href="@{/account/login}">Login here</a>
+			</div>
 		</div>
 	</div>
-        
+
 </body>
 
 </html>
