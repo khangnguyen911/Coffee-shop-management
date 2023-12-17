@@ -1,13 +1,18 @@
 Cài đặt XAMPP và mở 
-	1. Apache cổng 3344, 8088
-	2. MySQL cổng 3306
+	
+ - Apache cổng 3344, 8088
+ 
+ - MySQL cổng 3306
 
 Import database vào trang phpmyadmin
 
 Thông tin tài khoản
-	1. user - user1234 - USER
-	2. manager - manager4321 - MANAGER
-    	3. admin - admin2345 - ADMIN
+	
+ - user - user1234 - USER
+   
+ - manager - manager4321 - MANAGER
+   
+ - admin - admin2345 - ADMIN
     	4. npdkhang - npdkhang - ADMIN
     	5. nminhtan - nminhtan - ADMIN
     	6. buicthanh - buicthanh - ADMIN
