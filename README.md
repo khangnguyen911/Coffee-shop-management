@@ -8,7 +8,8 @@ Cài đặt XAMPP và mở
 
 Import database vào trang phpmyadmin
 
-	Thông tin tài khoản:
+	
+ 	THÔNG TIN TÀI KHOẢN:
 	
  - user - user1234 - USER
    
@@ -30,7 +31,8 @@ Import database vào trang phpmyadmin
    
  - nguyenphuc - nguyenphuc - USER
 
-	Vai trò:
+	
+ 	VAI TRÒ:
 
 - USER:
 
@@ -58,7 +60,7 @@ Import database vào trang phpmyadmin
  
   - Được vào mọi trang mà không bị chặn
 
-	Chức năng chính:
+	CHỨC NĂNG CHÍNH:
 
 1. Thực hiện đăng ký tài khoản
 2. Xác thực tài khoản đã đăng ký qua gmail
